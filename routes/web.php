@@ -66,7 +66,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-//Front controller
+//Front controllerv   edit//////
 Route::get('/', 'Front\HomeController@index')->name('front.index');
 
 //Contact Routs
