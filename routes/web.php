@@ -12,6 +12,9 @@
 */
 
 
+$ruter->get('/', function () use ($ruter) {
+    return 'hello ';
+});
 
 Route::group(['prefix' => 'admin'], function () {
 
