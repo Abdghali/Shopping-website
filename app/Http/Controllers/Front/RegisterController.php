@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Session;
 
 
@@ -33,8 +32,9 @@ class RegisterController extends Controller
             'email' => $request->email,
             'address' => $request->address,
             'password' => bcrypt($request->password),
-            'status' => 'true',
+            'status' => true,
         ]);
+
         auth()->login($user);
 
         return redirect('/user/profile');
