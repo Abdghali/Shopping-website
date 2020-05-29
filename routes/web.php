@@ -13,10 +13,6 @@
 
 
 
-// $router->get('abd', function () use ($router) {
-//     return bin2hex(openssl_random_pseudo_bytes(30));
-// });
-
 Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
