@@ -4,8 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use PharIo\Manifest\Url;
-use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url as ReferenceUrl;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Url::forceScheme('https');
     }
 
     /**
