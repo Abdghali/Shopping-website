@@ -12,9 +12,9 @@ class AdminUserSeeder extends Seeder
     public function run()
     {
         $admin = App\AdminUser::create([
-            'name' => 'AbedElRahman',
-            'email' => 'abed@gmail.com',
-            'password'=> bcrypt('123456'),
+            'name' => 'Abdalmohsen',
+            'email' => 'abdghali13@gmail.com',
+            'password' => bcrypt('123456'),
         ]);
     }
 }
