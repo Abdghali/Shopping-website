@@ -21,55 +21,53 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',  
-            'email' => 'required|email',  
-            'password' => 'required|confirmed',  
-            'address' => 'required',  
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
+            'address' => 'required',
         ]);
- 
-            $user = User::create([
-            'name' => $request->name,    
-            'email' => $request->email,    
-            'address' => $request->address,    
-            'password' => bcrypt($request->password),    
-            ]);
 
-            auth()->login($user);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'password' => bcrypt($request->password),
+            'status' => 'true',
+        ]);
+        auth()->login($user);
 
-         return redirect('/user/profile');           
-        }
-
-        public function edit($id)
-        {
-         try {
-             $user = User::findOrFail($id);
-             return view('front.UserRegistraion.edit',compact('user'));
-         } catch (ModelNotFoundException $exception) {
-             return redirect()->back()->with('error', 'User is not found');
-         }
-         $user = User::find($id);
-         return view('front.UserRegistraion.edit',compact('user'));
-        }
-
-  public function update(Request $request,$id)
-    {
-        $user = User::find($id);
-            $request->validate ([
-                'name' => 'required',
-                'email' => 'required',
-                'address' => 'required',
-            ]);
-            $user->update([
-                'name' =>$request->name,
-                'email' =>$request->email,
-                'address' =>$request->address,
-            ]);
-        Session::flash('success','User Updated Successfully');
-
-            return redirect()->route('user.profile');
-            
+        return redirect('/user/profile');
     }
 
+    public function edit($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            return view('front.UserRegistraion.edit', compact('user'));
+        } catch (ModelNotFoundException $exception) {
+            return redirect()->back()->with('error', 'User is not found');
+        }
+        $user = User::find($id);
+        return view('front.UserRegistraion.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+        ]);
+        Session::flash('success', 'User Updated Successfully');
+
+        return redirect()->route('user.profile');
+    }
 }
     // $newPassword = $request->only('password');
 
