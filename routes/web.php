@@ -11,11 +11,6 @@
 |
 */
 
-
-$ruter->get('/', function () use ($ruter) {
-    return 'hello ';
-});
-
 Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
