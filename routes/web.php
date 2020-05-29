@@ -67,7 +67,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Front controller
-Route::get('/', 'Front\homeController@index')->name('front.index');
+Route::get('/', 'Front\HomeController@index')->name('front.index');
 
 //Contact Routs
 Route::get('/contact', 'Front\ContactUsController@index')->name('user.contactUs');
